@@ -4,25 +4,20 @@ const song = document.getElementById('audio');
 const cover = document.getElementById('cover');
 const play = document.getElementById('play');
 const next = document.getElementById('next');
-const preveius = document.getElementById('previous');
+const previous = document.getElementById('previous');
 
-const CachimbodaPaz = {
-    songName : 'Cachimbo da Paz',
-    artist : 'Gabriel Pensador',
-    file : 'CachimbodaPaz'    
+const vidaLokaPart1 = {
+    songName: 'Vida Loka Parte 1',
+    artist: 'Racionais MCs',
+    file: 'Vida_loka_parte_1'
 };
-const ChamaosMulekes = {
-    songName : 'Chama os Mulekes',
-    artist : 'Cone Crew Diretoria',
-    file : 'ChamaosMulekes'    
-};
-const AmarElo = {
-    songName : 'AmarElo',
-    artist : 'emicida',
-    file : 'AmarElo'    
+const seLiga = {
+    songName: 'Se liga',
+    artist: 'Exaltasamba',
+    file: 'se_liga'
 };
 let isPlaying = false;
-const playlist = [CachimbodaPaz,ChamaosMulekes,AmarElo];
+const playlist = [vidaLokaPart1,seLiga];
 let index = 0;
 
 function playSong(){
@@ -39,23 +34,23 @@ function pauseSong(){
     isPlaying = false;
 }
 
-function playPauseDecider() {
-    if(isPlaying === true){
+function playPauseDecider(){
+    if (isPlaying === true){
         pauseSong();
     }
-    else{
+    else {
         playSong();
     }
 }
 
-function initializeSong (){
-    cover.src = `imagens/${playlist[index].file}.JPEG`;
+function initializeSong(){
+    cover.src = `imagens/${playlist[index].file}.webp`;
     song.src = `songs/${playlist[index].file}.mp3`;
     songName.innerText = playlist[index].songName;
     bandName.innerText = playlist[index].artist;
 }
 
-function previousSong () {
+function previousSong(){
     if(index === 0){
         index = playlist.length - 1;
     }
@@ -66,8 +61,8 @@ function previousSong () {
     playSong();
 }
 
-function nextSong () {
-    if(index === playlist.length - 1){
+function nextSong(){
+    if(index === playlist.length -1){
         index = 0;
     }
     else {
@@ -80,5 +75,5 @@ function nextSong () {
 initializeSong();
 
 play.addEventListener('click',playPauseDecider);
-preveius.addEventListener('click',previousSong);
-next.addEventListener ('click',nextSong);
+previous.addEventListener('click',previousSong);
+next.addEventListener('click',nextSong);
